@@ -28,12 +28,18 @@ stages{
                 stage ('Deploy to Staging'){
                     steps {
                         sh "cp -i /home/ravin/aws/RaviACG.pem -o StrictHostKeyChecking=no **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps"
+                        sh "pwd ; id"
+
+                        sh "cp target/*.jar /home/ravin/jenkins-sandbox"
+
+                        sh "java -classpath /home/ravin/jenkins-sandbox/*.jar jenkinsjob"
+
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
-                        sh "scp -i /home/ravin/aws/RaviACG.pem -o StrictHostKeyChecking=no **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat/webapps"
+                        sh "echo "
                     }
                 }
             }
