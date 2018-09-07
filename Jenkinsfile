@@ -18,7 +18,7 @@ stages{
             post {
                 success {
                     echo 'Now Archiving...'
-                    archiveArtifacts artifacts: './target/*.jar'
+                    archiveArtifacts artifacts: 'target/*.jar'
                 }
             }
         }
@@ -27,7 +27,7 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        sh "cp -i /home/ravin/aws/RaviACG.pem -o StrictHostKeyChecking=no **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps"
+                        //sh "cp -i /home/ravin/aws/RaviACG.pem -o StrictHostKeyChecking=no **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps"
                         sh "pwd ; id"
 
                         sh "cp target/*.jar /home/ravin/jenkins-sandbox"
