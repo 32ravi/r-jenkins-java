@@ -3,7 +3,7 @@ pipeline {
 
     parameters {
          string(name: 'tomcat_dev', defaultValue: 'ravi-vm', description: 'Staging Server')
-         #string(name: 'tomcat_prod', defaultValue: '107.22.144.57', description: 'Production Server')
+         //string(name: 'tomcat_prod', defaultValue: '107.22.144.57', description: 'Production Server')
     }
 
     triggers {
@@ -37,11 +37,11 @@ stages{
                     }
                 }
 
-                stage ("Deploy to Production"){
+                /*stage ("Deploy to Production"){
                     steps {
                         sh "echo "
                     }
-                }
+                }*/
             }
         }
     }
