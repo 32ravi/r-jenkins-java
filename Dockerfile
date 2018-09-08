@@ -1,4 +1,4 @@
 FROM openjdk:7
-ADD ./target/*.jar /usr/src/myapp
+COPY /var/lib/jenkins/workspace/java-docker-project/target/*.jar /usr/lib
 
-CMD ["java", "-classpath /usr/src/myapp/*.jar jenkinsjob"]
+CMD ["java", "-classpath /usr/lib/*.jar jenkinsjob"]
