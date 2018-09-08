@@ -7,14 +7,14 @@ pipeline {
     }
 
     triggers {
-         pollSCM('* * * * *')
+         pollSCM('1 1 * * *')
      }
 
 stages{
         stage('Build'){
             steps {
                 sh 'mvn clean package'
-                sh 'docker build . -t ravi-java-docker:${env.BUILD_ID}
+                sh 'docker build . -t ravi-java-docker:${env.BUILD_ID}'
                 sh "echo ${my_tag}"
             }
             post {
