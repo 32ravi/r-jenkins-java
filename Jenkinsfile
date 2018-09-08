@@ -14,7 +14,8 @@ stages{
         stage('Build'){
             steps {
                 sh 'mvn clean package'
-                sh 'docker build . -t ravi-java-docker:${env.BUILD_ID}'
+                sh " build done"
+                sh "docker build . -t ravijavadocker:${env.BUILD_ID}"
                 sh "echo ${my_tag}"
             }
             post {
