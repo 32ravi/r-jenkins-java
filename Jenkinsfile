@@ -14,6 +14,8 @@ stages{
         stage('Build'){
             steps {
                 sh 'mvn clean package'
+                sh 'docker build . -t ravi-java-docker:${env.BUILD_ID}
+                sh "echo ${my_tag}"
             }
             post {
                 success {
@@ -27,10 +29,9 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        //sh "cp -i /home/ravin/aws/RaviACG.pem -o StrictHostKeyChecking=no **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps"
                         sh "pwd ; id"
 
-                        sh "cp target/*.jar /home/ravin/jenkins-sandbox"
+                         sh "cp target/*.jar /home/ravin/jenkins-sandbox"
 
                         sh "java -classpath /home/ravin/jenkins-sandbox/*.jar jenkinsjob"
 
