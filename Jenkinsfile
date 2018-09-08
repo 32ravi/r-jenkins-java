@@ -16,7 +16,7 @@ stages{
                 sh 'mvn clean package'
                 //sh " build done"
                 sh "docker build . -t ravijavadocker:${env.BUILD_ID}"
-                sh "echo ${my_tag}"
+                //sh "echo ${my_tag}"
             }
             post {
                 success {
