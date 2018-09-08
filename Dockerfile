@@ -1,4 +1,4 @@
 FROM openjdk:7
 COPY ./target/*.jar /usr/lib/myapp.jar
-
-CMD ["java", "-classpath /usr/lib/*.jar jenkinsjob"]
+WORKDIR /usr/lib
+CMD ["java", "-classpath", "myapp.jar", jenkinsjob"]
